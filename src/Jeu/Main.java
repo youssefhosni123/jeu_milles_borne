@@ -3,7 +3,8 @@ import cartes.*;
 public class Main {
 	
 	    public static void main(String[] args) {
-	       /* // Créer un tableau de cartes pour initialiser le sabot
+	    	/*
+	        // Créer un tableau de cartes pour initialiser le sabot
 	        Carte[] cartes = {
 	            new Borne(25), new Borne(50), new Attaque(Type.FEU), new Parade(Type.ESSENCE)
 	        };
@@ -32,7 +33,10 @@ public class Main {
 	         for (Carte carte : toutesLesCartes) {
 	             System.out.println(carte);
 	         }
+	         
 	    }
+	    
 }
+
 
 

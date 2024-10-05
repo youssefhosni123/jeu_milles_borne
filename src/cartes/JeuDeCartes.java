@@ -2,6 +2,7 @@ package cartes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class JeuDeCartes {
 	 private Configuration[] typesDeCartes;
@@ -57,5 +58,31 @@ public class JeuDeCartes {
 	        // Convertir la liste en tableau et la renvoyer
 	        return toutesLesCartes.toArray(new Carte[0]);
 	    }
-	}
+	    public boolean checkCount() {
+	        Carte[] toutesLesCartes = donnerCartes();
+
+	        // Parcourir chaque configuration
+	        for (Configuration config : typesDeCartes) {
+	            int expectedCount = config.getNbExemplaires();
+	            int actualCount = 0;
+
+	            // Compter le nombre d'occurrences de la carte dans toutesLesCartes
+	            for (Carte carte : toutesLesCartes) {
+	                if (carte.equals(config.getCarte())) {
+	                    actualCount++;
+	                }
+	            }
+
+	            // Vérifier si le nombre d'occurrences correspond au nombre attendu
+	            if (actualCount != expectedCount) {
+	                System.out.println("Erreur : " + config.getCarte() + " attendue " + expectedCount + " fois, trouvée " + actualCount + " fois.");
+	                return false;
+	            }
+	        }
+
+	        // Tout est conforme
+	        return true;
+	    }
+	    }
+	
 	
