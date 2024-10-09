@@ -30,6 +30,11 @@ public class Borne extends Carte{
 	        return this.km == autreBorne.km;
 	    }
 
+		public int getValeur() {
+			
+			return km;
+		}
+
 	    
 	    
 
