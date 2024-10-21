@@ -1,11 +1,17 @@
 package cartes;
 
 public abstract class Carte {
-	protected Type type;
 	
+	protected Type type;
+  
+
 	public Type getType() {
 		return type;
 	}
+	
+	
+	 
+  
 	public void setType(Type type) {
 		this.type = type;
 	}
@@ -33,6 +39,15 @@ public abstract class Carte {
 	    // Comparer les deux types
 	    return this.type.equals(autreCarte.type);
 	}
+	  @Override
+	    public int hashCode() {
+	        return (type != null) ? type.hashCode() : 0;
+	    }
+
+	    @Override
+	    public String toString() {
+	        return "Carte de type : " + type;
+	    }
 
 
 }

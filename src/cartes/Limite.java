@@ -2,7 +2,7 @@ package cartes;
 
 public class Limite extends Carte{
 	public Limite (Type type) {
-		super();
+		 super();
 	}
 	@Override
 	public String toString() {

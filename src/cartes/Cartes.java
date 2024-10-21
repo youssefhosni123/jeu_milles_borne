@@ -1,9 +1,11 @@
 package cartes;
 
 public interface Cartes {
-	// Constantes représentant des cartes de type FEU
-    Carte PRIORITAIRE = new Botte("Prioritaire", Type.FEUX);
-    Carte FEU_ROUGE = new Attaque("Feu Rouge", Type.FEUX);
-    Carte FEU_VERT = new Parade("Feu Vert", Type.FEUX);
-
+	   // Constantes représentant des cartes de type FEU
+	 Carte FEU_ROUGE = new Attaque(Type.FEU);
+	    Carte FEU_VERT = new Parade(Type.FEU);
+	    Carte PRIORITAIRE = new Botte(Type.FEU);
+	    Carte ESSENCE = new Attaque(Type.ESSENCE);
+	    Carte CREVAISON = new Attaque(Type.CREVAISON);
+	    Carte ACCIDENT = new Attaque(Type.ACCIDENT);
 }

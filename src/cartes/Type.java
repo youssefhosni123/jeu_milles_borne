@@ -6,7 +6,7 @@ public enum Type {
     CREVAISON("Crevaison", "Roue de Secours", "Increvable"),
     ACCIDENT("Accident", "Réparations", "As du Volant"),
     LIMITE("Limite de Vitesse", "Fin de Limite", null), // Limite de Vitesse, pas de botte
-    VEHICULE_PRIORITAIRE(null, null, "Véhicule Prioritaire"); // Botte spécifique
+    VEHICULE_PRIORITAIRE(null, null, "Véhicule Prioritaire"),; // Botte spécifique
 	private final String attaque;
     private final String parade;
     private final String botte;

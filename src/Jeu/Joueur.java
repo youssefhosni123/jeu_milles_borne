@@ -54,6 +54,17 @@ public class Joueur  implements Comparable<Joueur>{
 	 public int compareTo(Joueur autreJoueur) {
         return this.nom.compareTo(autreJoueur.nom);
     }
-	
+	// Méthode pour déposer une carte dans la zone de jeu du joueur
+    public void deposer(Carte carte) {
+        zoneDeJeu.deposer(carte); // Appelle la méthode deposer de ZoneDeJeu
+    }
+ // Méthode pour retourner le nombre total de km parcourus
+    public int donnerKmParcourus() {
+        return zoneDeJeu.donnerKmParcourus();
+    }
+    public boolean estDepotAutorise(Carte carte) {
+        return zoneDeJeu.estDepotAutorise(carte);
+    }
+
 
 }
