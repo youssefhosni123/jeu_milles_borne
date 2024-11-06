@@ -18,9 +18,8 @@ public class MainJoueur implements Iterable<Carte> {
 	    }
 
 	    // Méthode pour jouer une carte (supprimer de la main)
-	    public void jouer(Carte carte) {
-	        assert main.contains(carte) : "La carte à jouer doit être présente dans la main";
-	        main.remove(carte);
+	    public boolean jouer(Carte carte) {
+	       return main.remove(carte);
 	    }
 
 	    // Méthode pour obtenir l'état actuel de la main du joueur
@@ -36,5 +35,5 @@ public class MainJoueur implements Iterable<Carte> {
 		    public Iterator<Carte> iterator() {
 		        return main.iterator();
 		    }
-
+		
 }

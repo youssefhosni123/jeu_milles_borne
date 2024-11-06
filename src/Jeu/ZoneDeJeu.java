@@ -1,13 +1,16 @@
 package Jeu;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import cartes.Attaque;
 import cartes.Bataille;
 import cartes.Borne;
+import cartes.Botte;
 import cartes.Carte;
 import cartes.Cartes;
 import cartes.DebutLimite;
@@ -178,5 +181,19 @@ public class ZoneDeJeu {
 		    // Par défaut, renvoie false si la carte ne correspond à aucun type attendu
 		    return false;
 		}
+	  public Set<Carte> getBottes() {
+	      
+			return collectiondeBornes.stream()
+	                .filter(carte -> carte instanceof Botte)
+	                .collect(Collectors.toSet());
+	    }
+	  public Carte getSommetPileBataille() {
+	        if (PileDeBataille.isEmpty()) {
+	            return null; // Retourne null si la pile est vide
+	        }
+	        return PileDeBataille.get(PileDeBataille.size() - 1); // Retourne la carte au sommet
+	    }
+
+
 
 }
