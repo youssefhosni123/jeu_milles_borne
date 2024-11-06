@@ -1,7 +1,7 @@
 package cartes;
 
 public class FinLimite extends Limite {
-	 public FinLimite(Type type) {
+	 public FinLimite() {
 		 super(Type.LIMITE);
 	    }
 
@@ -10,5 +10,7 @@ public class FinLimite extends Limite {
 	    public String toString() {
 	    	 return "Fin de Limite de type: " + (type != null ? type.name() : "Aucun type");
 	    }
-
+		  public FinLimite(Type type) {
+		        super(type);
+		    }
 }

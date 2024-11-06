@@ -6,9 +6,11 @@ import utils.GestionCartes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 public class jeu {
     private Sabot sabot;
     private List<Joueur> joueurs;
@@ -99,7 +101,7 @@ public class jeu {
     }
     public String lancer() {
         StringBuilder resultat = new StringBuilder();
-        int tourCount = 0; // Compteur de tours pour éviter une boucle infinie
+        int tourCount = 0; // Limite de tours pour éviter une boucle infinie
 
         while (!sabot.estVide()) {
             Joueur joueur = donnerJoueurSuivant();
@@ -113,16 +115,50 @@ public class jeu {
                 return resultat.toString();
             }
 
-            // Limite temporaire de tours pour éviter une boucle infinie
-            if (++tourCount > 1000) { // Par exemple, limiter à 1000 tours
+            // Limite temporaire de tours pour éviter une boucle infinie (augmentée à 5000)
+            if (++tourCount > 5000) { 
                 resultat.append("\nLimite de tours atteinte. Fin de la simulation.");
+                
+                // Ajouter le classement final lorsque la limite de tours est atteinte
+                resultat.append("\nClassement final des joueurs :\n");
+                List<Joueur> classementFinal = classement();
+                for (int i = 0; i < classementFinal.size(); i++) {
+                    Joueur joueurClasse = classementFinal.get(i);
+                    resultat.append((i + 1)).append(". ").append(joueurClasse.getNom())
+                            .append(" - ").append(joueurClasse.donnerKmParcourus()).append(" km\n");
+                }
                 return resultat.toString();
             }
         }
 
-        resultat.append("\nLe sabot est vide. Fin de la partie sans gagnant.");
+        // Affichage du classement final lorsque le sabot est vide
+        resultat.append("\nLe sabot est vide. Fin de la partie sans qu'un joueur ait atteint 1000 bornes.\n");
+        resultat.append("\nClassement final des joueurs :\n");
+
+        // Récupérer le classement final et l'afficher
+        List<Joueur> classementFinal = classement();
+        for (int i = 0; i < classementFinal.size(); i++) {
+            Joueur joueurClasse = classementFinal.get(i);
+            resultat.append((i + 1)).append(". ").append(joueurClasse.getNom())
+                    .append(" - ").append(joueurClasse.donnerKmParcourus()).append(" km\n");
+        }
+
+        // Déterminer le vainqueur
+        if (!classementFinal.isEmpty()) {
+            Joueur vainqueur = classementFinal.get(0);
+            resultat.append("\nLe vainqueur est ").append(vainqueur.getNom())
+                    .append(" avec ").append(vainqueur.donnerKmParcourus()).append(" km parcourus.");
+        }
+
         return resultat.toString();
     }
+
+    public List<Joueur> classement (){
+    	Comparator <Joueur> comparator = (j1,j2)->Integer.compare(j2.donnerKmParcourus(), j1.donnerKmParcourus());
+    	 TreeSet<Joueur> classementSet = new TreeSet<>(comparator);
+    	 classementSet.addAll(joueurs);
+    	 return new ArrayList<>(classementSet);
+    }  
 
 
 	}
